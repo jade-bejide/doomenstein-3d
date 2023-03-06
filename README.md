@@ -7,4 +7,8 @@
 
 ### Building & Running
 
+# MacOS
 `$ make doom|wolf|all`, binaries are `bin/doom` and `bin/wolf` respectively
+
+#Ubuntu Linux
+`$ make linux`, binaries are `bin/doom` and `bin/wolf` respectively

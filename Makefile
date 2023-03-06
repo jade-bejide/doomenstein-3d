@@ -1,7 +1,11 @@
 print-%:; @echo $($*)
 
-CC = $(shell brew --prefix llvm)/bin/clang
-LD = $(shell brew --prefix llvm)/bin/clang
+#CC = $(shell brew --prefix llvm)/bin/clang
+#LD = $(shell brew --prefix llvm)/bin/clang
+
+
+CC = gcc
+LD = gcc
 
 # library paths
 PATH_LIB = lib
@@ -36,6 +40,7 @@ CCFLAGS += -Wno-gnu-empty-initializer
 CCFLAGS += -Wno-gnu-pointer-arith
 CCFLAGS += -Wno-c99-extensions
 CCFLAGS += -Wno-c11-extensions
+CCFLAGS += -lSDL
 
 LDFLAGS = -lm
 LDFLAGS += $(shell $(BIN)/sdl/sdl2-config --prefix=$(BIN) --static-libs)
@@ -74,6 +79,10 @@ doom: dirs $(BIN)/src/main_doom.o
 
 wolf: dirs $(BIN)/src/main_wolf.o
 	$(LD) -o bin/wolf $(BIN)/src/main_wolf.o $(LDFLAGS)
+
+linux:
+	$(CC) src/main_doom.c -lm -lSDL2 -o bin/doom -I/usr/include/SDL2/ -std=c2x
+	$(CC) src/main_wolf.c -lm -lSDL2 -o bin/wolf -I/usr/include/SDL2/ -std=c2x
 
 all: doom wolf
 
