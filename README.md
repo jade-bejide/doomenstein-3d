@@ -8,6 +8,8 @@
 ### Building & Running
 
 # MacOS
+To swap back to MacOS replace commented and uncommented CC and LD variables.
+
 `$ make doom|wolf|all`, binaries are `bin/doom` and `bin/wolf` respectively
 
 #Ubuntu Linux
